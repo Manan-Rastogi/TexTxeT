@@ -9,15 +9,42 @@ export default function TextArea(props) {
     setText(event.target.value);
   };
 
+  const handleOnClickLowerCase = () => {
+    let lowerText = text.toLowerCase();
+    setText(lowerText);
+  };
+
   // Handling states - clicking on change button.
   const handleOnClickUpperCase = () => {
-    let newText = text.toUpperCase();
-    setText(newText);
+    let upperText = text.toUpperCase();
+    setText(upperText);
+  };
+
+  const handleOnClickTitleCase = () => {
+    var titleText = text.toLowerCase().split(" ");
+    for (var i = 0; i < titleText.length; i++) {
+      if (titleText[i] == "") {
+        continue;
+      }
+      titleText[i] = titleText[i][0].toUpperCase() + titleText[i].slice(1);
+    }
+
+    setText(titleText.join(" "));
+  };
+
+  const handleOnClickURLEncode = () => {
+    let urlEncodedText = encodeURIComponent(text);
+    setText(urlEncodedText);
+  };
+
+  const handleOnClickURLDecode = () => {
+    let urlEncodedText = decodeURIComponent(text);
+    setText(urlEncodedText);
   };
 
   return (
     <>
-      <div className="container mb-3">
+      <div className="container mb-3 my-4">
         <h1>{props.heading}</h1>
         <textarea
           className="form-control"
@@ -33,9 +60,63 @@ export default function TextArea(props) {
         >
           UPPER CASE
         </button>
-        <button className="btn btn-primary my-5 mx-2">lower case</button>
-        <button className="btn btn-primary my-5 mx-2">Title Case</button>
-        <button className="btn btn-primary my-5 mx-2">Count Words</button>
+        <button
+          className="btn btn-primary my-5 mx-2"
+          onClick={handleOnClickLowerCase}
+        >
+          lower case
+        </button>
+        <button
+          className="btn btn-primary my-5 mx-2"
+          onClick={handleOnClickTitleCase}
+        >
+          Title Case
+        </button>
+
+        <button
+          className="btn btn-primary my-5 mx-2"
+          onClick={handleOnClickURLEncode}
+        >
+          URL Encode
+        </button>
+
+        <button
+          className="btn btn-primary my-5 mx-2"
+          onClick={handleOnClickURLDecode}
+        >
+          Decode URL Encoded
+        </button>
+
+        <div className="container">
+          <div>
+            <h>Text Summary</h>
+            <p>
+              This text has{" "}
+              {
+                text.split(" ").filter((wordCount) => {
+                  return wordCount != "";
+                }).length
+              }{" "}
+              words, {text.length} characters and {text.split(" ").length - 1}{" "}
+              spaces.
+            </p>
+          </div>
+          <div>
+            <h3>Reading Time</h3>
+            <p>
+              Time to read this section is{" "}
+              {0.008 *
+                text.split(" ").filter((wordCount) => {
+                  return wordCount != "";
+                }).length}{" "}
+              minutes
+            </p>
+          </div>
+          <div>
+            <h3>Preview</h3>
+            <p>{text}</p>
+          </div>
+        </div>
       </div>
     </>
   );
