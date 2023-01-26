@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import Alert from "./Alert";
 
 export default function Navbar(props) {
   
@@ -55,6 +56,7 @@ export default function Navbar(props) {
           </div>
         </div>
       </nav>
+      <Alert alert={props.alert} />
     </>
   );
 }

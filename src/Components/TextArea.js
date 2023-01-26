@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Alert from "./Alert";
 
 export default function TextArea(props) {
   // Destructuring states.
@@ -45,10 +46,23 @@ export default function TextArea(props) {
   const handleOnClickCopyText = () =>{
     let copyText = text
     navigator.clipboard.writeText(copyText)
+
+    showAlert("Text Copied to Clipboard.", "success")
   }
+
+  const [alert, setAlert] = useState(null);
+
+  const showAlert = (message, type) => {
+    setAlert({ message: message, type: type });
+
+    setTimeout(() => {
+      setAlert(null)
+    }, 1500);
+  };
 
   return (
     <>
+    <Alert alert={alert}/>
       <div className="container mb-3 my-4">
         <h1>{props.heading}</h1>
         <textarea
