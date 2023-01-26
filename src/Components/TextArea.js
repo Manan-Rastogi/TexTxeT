@@ -23,7 +23,7 @@ export default function TextArea(props) {
   const handleOnClickTitleCase = () => {
     var titleText = text.toLowerCase().split(" ");
     for (var i = 0; i < titleText.length; i++) {
-      if (titleText[i] == "") {
+      if (titleText[i] === "") {
         continue;
       }
       titleText[i] = titleText[i][0].toUpperCase() + titleText[i].slice(1);
@@ -42,6 +42,11 @@ export default function TextArea(props) {
     setText(urlEncodedText);
   };
 
+  const handleOnClickCopyText = () =>{
+    let copyText = text
+    navigator.clipboard.writeText(copyText)
+  }
+
   return (
     <>
       <div className="container mb-3 my-4">
@@ -53,6 +58,7 @@ export default function TextArea(props) {
           //   placeholder="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid nulla ipsa voluptatum tenetur assumenda magnam rem. Maiores eveniet dignissimos, blanditiis minima, et laborum eum eaque voluptatem molestiae nihil temporibus tenetur eligendi tempore atque nulla.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam provident, deserunt recusandae cum, iusto voluptas, optio sunt ad mollitia eos ea expedita ipsum veniam ipsa velit voluptatibus quidem omnis nam?"
           value={text}
           onChange={handleOnChangeTextArea}
+          style={props.styles}
         ></textarea>
         <button
           className="btn btn-primary my-5 mx-2"
@@ -87,14 +93,21 @@ export default function TextArea(props) {
           Decode URL Encoded
         </button>
 
+        <button
+          className="btn btn-primary my-5 mx-2"
+          onClick={handleOnClickCopyText}
+        >
+          Copy Text
+        </button>
+
         <div className="container">
           <div>
-            <h>Text Summary</h>
+            <h2>Text Summary</h2>
             <p>
               This text has{" "}
               {
                 text.split(" ").filter((wordCount) => {
-                  return wordCount != "";
+                  return wordCount !== "";
                 }).length
               }{" "}
               words, {text.length} characters and {text.split(" ").length - 1}{" "}
@@ -107,7 +120,7 @@ export default function TextArea(props) {
               Time to read this section is{" "}
               {0.008 *
                 text.split(" ").filter((wordCount) => {
-                  return wordCount != "";
+                  return wordCount !== "";
                 }).length}{" "}
               minutes
             </p>
