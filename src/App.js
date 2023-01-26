@@ -47,6 +47,14 @@ function App() {
       setStyleTextArea({ color: "white", backgroundColor: "#212529" });
       setStyleAbout({ color: "white", backgroundColor: "black" });
       showAlert("Dark Mode Enabled", "success")
+
+      // setInterval(() => {
+      //   document.title = "Title Changing"
+      // }, 1500);
+      // setInterval(() => {
+      //   document.title = "Why Title Changing"
+      // }, 2000);
+
     } else {
       setMode("light");
       setModeText("Dark");
@@ -61,8 +69,8 @@ function App() {
   return (
     <div style={styles}>
       <Navbar
-        title="TextUtils"
-        aboutText="About TextUtils"
+        title="TexTxeT"
+        aboutText="About TexTxeT"
         mode={mode}
         modeText={modeText}
         toggleMode={toggleMode}
@@ -74,7 +82,6 @@ function App() {
         styles={styleTextArea}
       />
       <br />
-      <hr />
       <br />
       <About styles={styleAbout} />
     </div>

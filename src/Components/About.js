@@ -14,7 +14,7 @@ export default function About(props) {
                 aria-controls="collapseOne"
                 style={props.styles}
               >
-                <b>About TextUtils</b>
+                <b>About TexTxeT</b>
               </button>
             </h2>
             <div
