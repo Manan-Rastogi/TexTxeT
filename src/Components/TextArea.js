@@ -23,7 +23,7 @@ export default function TextArea(props) {
   };
 
   const handleOnClickTitleCase = () => {
-    var titleText = text.toLowerCase().split(" ");
+    var titleText = text.toLowerCase().split(/\s+/);
     for (var i = 0; i < titleText.length; i++) {
       if (titleText[i] === "") {
         continue;
@@ -111,7 +111,7 @@ export default function TextArea(props) {
             <p>
               This text has{" "}
               {
-                text.split(" ").filter((wordCount) => {
+                text.split(/\s+/).filter((wordCount) => {
                   return wordCount !== "";
                 }).length
               }{" "}
