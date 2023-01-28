@@ -70,7 +70,7 @@ function App() {
 
   return (
     <div style={styles}>
-      <Router>
+      {/* <Router> */}
       <Navbar
         title="TexTxeT"
         aboutText="About TexTxeT"
@@ -81,19 +81,19 @@ function App() {
         alert={alert}
       />
       
-        <Routes>
+        {/* <Routes>
           <Route
             exact path="/"
-            element={
+            element={ */}
               <TextArea
                 heading="Enter Text in the box to Analyse"
                 styles={styleTextArea}
               />
-            }
+            {/* }
           ></Route>
           <Route exact path="/about" element={<About styles={styleAbout} />}></Route>
-        </Routes>
-      </Router>
+        </Routes> */}
+      {/* </Router> */}
     </div>
   );
 }

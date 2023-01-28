@@ -11,9 +11,9 @@ export default function Navbar(props) {
         style={{ color: props.styles.color }}
       >
         <div className="container-fluid">
-          <Link className="navbar-brand" to={`/`}>
+          <a className="navbar-brand" to="#">
             {props.title}
-          </Link>
+          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -28,14 +28,14 @@ export default function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to={`/`}>
+                <a className="nav-link active" aria-current="page" href="#">
                   Home
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to={`/about`}>
+                <a className="nav-link" to="#">
                   {props.aboutText}
-                </Link>
+                </a>
               </li>
             </ul>
 
@@ -71,5 +71,5 @@ Navbar.propTypes = {
 // We can set also default proptypes here.
 Navbar.defaultProps = {
   title: "Title Here",
-  aboutText: "Aboout Here",
+  aboutText: "About Here",
 };
