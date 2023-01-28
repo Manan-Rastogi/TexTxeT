@@ -24,10 +24,10 @@ export default function About(props) {
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body" style={props.styles}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
-                dolor numquam id, ex quam beatae ipsam a consectetur laudantium
-                vel veritatis corrupti delectus quis cupiditate adipisci eius.
-                Natus dicta nostrum voluptas repellat a maiores.
+                TexTxeT is an amazing utility to manipulate your text. You can
+                convert your text in Uppercase, Lowercase, Titlecase. You can
+                also URL Encode and Decode your text, count words, characters,
+                spaces and preview it nicely.
               </div>
             </div>
           </div>

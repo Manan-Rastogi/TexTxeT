@@ -41,7 +41,7 @@ function App() {
 
   const toggleMode = () => {
     if (mode === "light") {
-      document.body.style = `background: black;`  // Look for a better way to do so in future.
+      document.body.style = `background: black;`; // Look for a better way to do so in future.
       setMode("dark");
       setModeText("Light");
       setStyles({ color: "white", backgroundColor: "black" });
@@ -57,7 +57,7 @@ function App() {
       //   document.title = "Why Title Changing"
       // }, 2000);
     } else {
-      document.body.style = `background: white;`
+      document.body.style = `background: white;`;
       setMode("light");
       setModeText("Dark");
       setStyles({ color: "black", backgroundColor: "white" });
@@ -71,27 +71,33 @@ function App() {
   return (
     <div style={styles}>
       <Router>
-      <Navbar
-        title="TexTxeT"
-        aboutText="About TexTxeT"
-        mode={mode}
-        modeText={modeText}
-        toggleMode={toggleMode}
-        styles={styleNavbar}
-        alert={alert}
-      />
-      
+        <Navbar
+          title="TexTxeT"
+          aboutText="About"
+          mode={mode}
+          modeText={modeText}
+          toggleMode={toggleMode}
+          styles={styleNavbar}
+          alert={alert}
+        />
+
         <Routes>
           <Route
-            exact path="/"
+            exact
+            path="/"
             element={
               <TextArea
                 heading="Enter Text in the box to Analyse"
                 styles={styleTextArea}
+                alertHandle={showAlert}
               />
             }
           ></Route>
-          <Route exact path="/about" element={<About styles={styleAbout} />}></Route>
+          <Route
+            exact
+            path="/about"
+            element={<About styles={styleAbout} />}
+          ></Route>
         </Routes>
       </Router>
     </div>

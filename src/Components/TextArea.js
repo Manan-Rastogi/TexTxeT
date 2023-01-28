@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Alert from "./Alert";
 
 
 
@@ -49,23 +48,13 @@ export default function TextArea(props) {
     let copyText = text
     navigator.clipboard.writeText(copyText)
 
-    showAlert("Text Copied to Clipboard.", "success")
+    props.alertHandle("Text Copied to Clipboard.", "success")
   }
 
-  const [alert, setAlert] = useState(null);
-
-  const showAlert = (message, type) => {
-    setAlert({ message: message, type: type });
-
-    setTimeout(() => {
-      setAlert(null)
-    }, 1500);
-  };
 
   return (
     <>
-    <Alert alert={alert}/>
-      <div className="container mb-3 my-4">
+      <div className="container my-4 mb-3">
         <h1>{props.heading}</h1>
         <textarea
           className="form-control"
@@ -76,47 +65,47 @@ export default function TextArea(props) {
           onChange={handleOnChangeTextArea}
           style={props.styles}
         ></textarea>
-        <button
-          className="btn btn-primary my-5 mx-2"
+        <button disabled={text.length === 0}
+          className="btn btn-primary mt-4 mx-2"
           onClick={handleOnClickUpperCase}
         >
           UPPER CASE
         </button>
-        <button
-          className="btn btn-primary my-5 mx-2"
+        <button disabled={text.length === 0}
+          className="btn btn-primary mt-4 mx-2"
           onClick={handleOnClickLowerCase}
         >
           lower case
         </button>
-        <button
-          className="btn btn-primary my-5 mx-2"
+        <button disabled={text.length === 0}
+          className="btn btn-primary mt-4 mx-2"
           onClick={handleOnClickTitleCase}
         >
           Title Case
         </button>
 
-        <button
-          className="btn btn-primary my-5 mx-2"
+        <button disabled={text.length === 0}
+          className="btn btn-primary mt-4 mx-2"
           onClick={handleOnClickURLEncode}
         >
           URL Encode
         </button>
 
-        <button
-          className="btn btn-primary my-5 mx-2"
+        <button disabled={text.length === 0}
+          className="btn btn-primary mt-4 mx-2"
           onClick={handleOnClickURLDecode}
         >
           Decode URL Encoded
         </button>
 
-        <button
-          className="btn btn-primary my-5 mx-2"
+        <button disabled={text.length === 0}
+          className="btn btn-primary mt-4 mx-2"
           onClick={handleOnClickCopyText}
         >
           Copy Text
         </button>
 
-        <div className="container">
+        <div className="container mt-5">
           <div>
             <h2>Text Summary</h2>
             <p>
@@ -143,7 +132,7 @@ export default function TextArea(props) {
           </div>
           <div>
             <h3>Preview</h3>
-            <p>{text}</p>
+            <p>{text.length > 0 ? text : "Nothing to Preview."}</p>
           </div>
         </div>
       </div>

@@ -10,6 +10,7 @@ export default function Navbar(props) {
         className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
         style={{ color: props.styles.color }}
       >
+     
         <div className="container-fluid">
           <Link className="navbar-brand" to={`/`}>
             {props.title}
