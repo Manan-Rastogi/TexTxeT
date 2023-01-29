@@ -1,4 +1,4 @@
-# About Textxets
+# About Textxet
 ```
 TexTxeT is an amazing utility to manipulate your text. You can
 convert your text in Uppercase, Lowercase, Titlecase. You can
